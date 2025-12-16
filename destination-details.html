@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en"> <!-- mean English Langueg --> 
+<head>
+    <meta charset="UTF-8"> 
+    <title>Student Trips - Destination Details</title>
+
+
+<!-- external css  from file style (from chapter 4) --> 
+    <link rel="stylesheet" href="style.css">
+
+<style>
+
+.btn-primary {
+    background-color: #1b7a4d;
+    color: #ffffff;
+    text-decoration:none;
+    border-width: 1cm ;
+    border-radius: 100px;
+    font-size: 1em;
+
+}
+</style>
+</head>
+
+<body>
+<div id="imgModal" class="img-modal close-area">
+    <img id="modalImg" src="">
+</div>
+
+
+<!--like in index file -->
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+        <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+        alt="My Profile" class="profile-icon" 
+        onclick="window.location.href='myprofile.html'">
+        <!--this is from chapter 6,changes the page to another file --> 
+</div>
+
+
+
+<div class="page-container">
+    <h1 class="page-title">Destination details</h1>
+    <p class="page-subtitle">
+        Each city offers a different style of student trip: camping, beach, culture, or city life.
+        Choose the one that matches your adventure level, then book your trip.
+    </p>
+
+
+    <!-- Progress bar: "Trip" step is active now -->
+    <div class="progress">
+        <span>Account</span>
+        <span>Profile</span>
+        <span>City</span>
+        <span class="active">Trip</span>
+        <span>Payment</span>
+        <span>Confirm</span>
+    </div>
+
+    <!--  Bali  -->
+    <!-- (From Chapter 2) using id attribute so link bali from destinations.html scrolls here -->
+     
+
+    <div class="city-section" id="bali">
+        <div class="city-header">
+            <h2>Bali – Beach &amp; <!--ensures the browser displays the character correctly -->
+                Adventure Camp
+            </h2>
+
+            <p class="city-meta">
+                Trip name: Bali Student Beach Camp &bull; 
+                         <!--It is used when we want a bullet inside text, without using list elements.
+-->
+                Type: Beach + Light Hiking &bull; 
+                Duration: 5 days / 4 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+
+                <img src="images/bali.jpg" alt="Bali main beach camp">
+            </div>
+
+            <div class="gallery-thumbs">
+
+                <img src="https://i.pinimg.com/736x/2b/98/7f/2b987fd230fd811b466deebb15415f5e.jpg" 
+                alt="Bali second view">
+
+                <img src="https://i.pinimg.com/736x/90/02/ac/9002ac2d5f4e8aebf35be285eb0839c2.jpg" 
+                alt="Bali third view">
+
+            </div>
+        </div>
+
+
+        <p>
+            Bali offers warm beaches, green rice fields, and a relaxed student atmosphere.
+            This trip is a mix between fun on the beach and short guided hikes to waterfalls.
+        </p>
+        <p class="activities-title">Included activities</p>
+
+        <!-- From Chapter 2: unordered list <ul> and <li> elements  -->
+
+        <ul class="activities">
+            <li>Welcome campfire night on the beach with student games.</li>
+            <li>Short hiking trail to a nearby waterfall with a guide.</li>
+            <li>Sunrise yoga session by the sea.</li>
+            <li>Visit to a traditional village to learn about Balinese culture.</li>
+        </ul>
+        <p class="price-text">Approximate price: 
+            <strong>$280</strong>
+             per student (including accommodation and local transport).</p>
+
+
+
+        <!-- From Chapter 2: <a> used as a button to navigate to booking.html with #bali -->
+        <a class="btn-primary" href="booking.html#bali">Book Now</a>
+    </div>
+
+
+    <!--  London -->
+    <div class="city-section" id="london">
+        <div class="city-header">
+            <h2>London – History &amp; Culture Week</h2>
+            <p class="city-meta">
+                Trip name: London Cultural Week &bull; <!--It is used when we want a bullet inside text, without using list elements.
+-->
+                Type: Historical / Cultural &bull; 
+                Duration: 6 days / 5 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="images/london.jpg" alt="London main view">
+            </div>
+            <div class="gallery-thumbs">
+                <img src="https://i.pinimg.com/1200x/df/52/0a/df520aa60b50becb60445d78e1b82a6d.jpg" alt="London museum">
+                <img src="https://i.pinimg.com/1200x/d2/26/69/d22669546938d95bd6e2728e3bd9ffb4.jpg" alt="London city walk">
+            </div>
+        </div>
+
+
+        <p>
+            London is perfect for students who enjoy museums, history, and city walks.
+            The trip combines visits to famous landmarks with educational sessions.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+            <li>Guided visit to the British Museum.</li>
+            <li>River Thames boat ride and London Eye ticket.</li>
+            <li>Walking tour around Westminster and Buckingham Palace.</li>
+            <li>Short visit to a local university campus and student talk.</li>
+        </ul>
+
+
+        <p class="price-text">Approximate price: <strong>$320</strong> per student (excluding flight tickets).</p>
+
+        <a class="btn-primary" href="booking.html#london">Book Now</a>
+    </div>
+
+    <!-- Turkey -->
+    <div class="city-section" id="turkey">
+        <div class="city-header">
+            <h2>Cappadocia, Turkey – Camping &amp; 
+                Hot Air Balloons</h2>
+
+            <p class="city-meta">
+                Trip name: Cappadocia Student Camp &bull; 
+                Type: Camping &amp; 
+                Light Adventure &bull;
+                 Duration: 4 days / 3 nights
+            </p>
+        </div>
+
+        
+        <div class="gallery"> <!--يعني معرض-->
+            <div class="gallery-main">
+                <img src="images/turkey.jpg" 
+                alt="Cappadocia main view">
+            </div>
+            <div class="gallery-thumbs">
+
+                <img src="https://i.pinimg.com/736x/4d/9e/7b/4d9e7be6d441142be895a0bceb03b285.jpg" 
+                alt="Cappadocia balloon">
+
+                <img src="https://i.pinimg.com/736x/81/f9/44/81f9449a51051a6afa2417288a9a358f.jpg" 
+
+                alt="Cappadocia camp">
+            </div>
+        </div>
+
+
+        <p>
+            Cappadocia is known for its unique rock formations and colorful hot air balloons.
+            This trip focuses on camping, star watching, and exploring valleys safely with guides.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+
+            <li>Two nights of student camping in a supervised campsite.</li>
+            <li>Guided walk through one of the famous valleys.</li>
+            <li>Optional hot air balloon flight at sunrise (extra fee).</li>
+            <li>Evening gathering with Turkish snacks and cultural stories.</li>
+
+        </ul>
+
+
+
+        <p class="price-text">Approximate price: 
+            <strong>$250</strong> 
+
+            per student (camping gear included).</p>
+
+        <a class="btn-primary" href="booking.html#turkey">Book Now</a>
+    </div>
+
+
+
+    <!--  New York  -->
+    <div class="city-section" id="newyork">
+        <div class="city-header">
+            <h2>New York – City &amp; 
+                University Visit</h2>
+
+            <p class="city-meta">
+                Trip name: New York Student Experience &bull;
+                 Type: City Trip &bull; 
+                 Duration: 5 days / 4 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="images/newyork.jpg" 
+                alt="New York skyline">
+            </div>
+
+            <div class="gallery-thumbs">
+
+                <img src="https://i.pinimg.com/1200x/58/48/d4/5848d405d1cecb0575af83b82774b9be.jpg" 
+                alt="New York park">
+
+                <img src="https://i.pinimg.com/1200x/ac/bd/c7/acbdc799818213709faaa4fd249baf34.jpg" 
+                alt="New York streets">
+
+            </div>
+        </div>
+
+
+        <p>
+            New York is ideal for students who want to feel the energy of a big city.
+            The program mixes sightseeing, a campus tour, and some free time for exploring.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+            <li>Visit to the Statue of Liberty and Central Park walk.</li>
+            <li>Guided tour inside a nearby university campus.</li>
+            <li>Short educational session about studying abroad.</li>
+            <li>Evening in Times Square with group supervision.</li>
+        </ul>
+
+
+        <p class="price-text">Approximate price: <strong>$400</strong> 
+            per student.</p>
+
+        <a class="btn-primary" href="booking.html#newyork">Book Now</a>
+    </div>
+
+
+
+    <!-- Tokyo  -->
+    <div class="city-section" id="tokyo">
+        <div class="city-header">
+            <h2>Tokyo – Tech &amp;
+                 Culture Experience</h2>
+            <p class="city-meta">
+                Trip name: Future Tokyo for Students &bull; 
+                Type: Technology + Culture &bull; 
+                Duration: 6 days / 5 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="images/tokyo.jpg" 
+                alt="Tokyo city">
+            </div>
+
+            <div class="gallery-thumbs">
+                <img src="https://i.pinimg.com/1200x/9c/3e/15/9c3e15c36440f829bb59834f34d82589.jpg" 
+                alt="tokyo">
+
+                <img src="https://i.pinimg.com/736x/3d/29/3d/3d293ddd78de491adc8ce3809facdb05.jpg" 
+                alt="Tokyo traditional temple">
+
+            </div>
+        </div>
+
+
+        <p>
+            Tokyo combines advanced technology, anime streets, and traditional temples.
+            Students experience both modern Japan and its classic culture.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+            <li>Visit to Akihabara technology district.</li>
+            <li>Interactive science or technology museum.</li>
+            <li>Short kimono experience and group photo.</li>
+            <li>Walk through a traditional temple area and local market.</li>
+        </ul>
+
+
+        <p class="price-text">Approximate price: <strong>$420</strong> per student.</p>
+
+        <a class="btn-primary" href="booking.html#tokyo">Book Now</a>
+    </div>
+
+
+    <!--  France  -->
+    <div class="city-section" id="france">
+        <div class="city-header">
+            <h2>Paris, France – Art &amp; 
+                Museum Tour</h2>
+            <p class="city-meta">
+                Trip name: Paris Art Week &bull; 
+                Type: Art &amp; 
+                Culture &bull; 
+                Duration: 5 days / 4 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="images/france.jpg" 
+                alt="Paris main view">
+            </div>
+
+            <div class="gallery-thumbs">
+                <img src="https://i.pinimg.com/1200x/36/5c/23/365c232aa49c6e472e01c910adaa030a.jpg" 
+                alt="Paris museum">
+
+                <img src="https://i.pinimg.com/736x/b7/82/eb/b782eb14828c62f0ffc84c2c1264ed31.jpg" 
+                alt="Paris street">
+
+            </div>
+        </div>
+
+
+        <p>
+            Paris is a dream destination for students who love art and history.
+            The trip focuses on museums, river views, and classic Paris streets.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+            <li>Visit to the Louvre Museum or another major art museum.</li>
+            <li>Seine River cruise near the Eiffel Tower.</li>
+            <li>Photo walk in classic Paris streets and bridges.</li>
+            <li>Free time for small group café visits (with supervision rules).</li>
+        </ul>
+
+
+        <p class="price-text">Approximate price: <strong>$350</strong> per student.</p>
+
+        <a class="btn-primary" href="booking.html#france">Book Now</a>
+    </div>
+
+
+    <!--  Switzerland  -->
+    <div class="city-section" id="swiss">
+        <div class="city-header">
+            <h2>Switzerland – Mountain Hiking &amp;
+                 Camping</h2>
+            <p class="city-meta">
+
+                Trip name: Swiss Alps Student Adventure &bull; 
+                Type: Hiking &amp; 
+                Camping &bull; 
+                Duration: 5 days / 4 nights
+            </p>
+        </div>
+
+
+        <div class="gallery">
+            <div class="gallery-main">
+                <img src="images/swiss.jpg" 
+                alt="Swiss mountains">
+            </div>
+
+            <div class="gallery-thumbs">
+                <img src="https://i.pinimg.com/736x/1b/d3/ee/1bd3ee5ab1346365e8bb01e5faa48146.jpg" 
+                alt="Swiss lake">
+
+                <img src="https://i.pinimg.com/1200x/fc/29/81/fc298153052339f7811a1e9b1a1d733a.jpg" 
+                alt="Swiss camp">
+            </div>
+        </div>
+
+
+
+        <p>
+            Switzerland offers beautiful mountain views and safe hiking trails for students.
+            The program includes easy-level hikes and time near lakes and villages.
+        </p>
+
+
+        <p class="activities-title">Included activities</p>
+        <ul class="activities">
+            <li>Guided hiking day in a beginner-friendly trail.</li>
+            <li>Cable car or train ride to a higher viewpoint.</li>
+            <li>Camping night close to a mountain lake (supervised camp).</li>
+            <li>Workshop about mountain safety and environment.</li>
+        </ul>
+
+
+        <p class="price-text">Approximate price: <strong>$380</strong> per student.</p>
+
+        <a class="btn-primary" href="booking.html#swiss">Book Now</a>
+    </div>
+
+</div>
+
+
+
+<!--from ch6-->
+
+<script>
+    
+    // Select all images inside .gallery classes
+
+    const images = document.querySelectorAll(".gallery img");
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        });
+    });
+
+
+
+    // Close modal when clicking anywhere
+    modal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+</script>
+
+</body>
+</html>

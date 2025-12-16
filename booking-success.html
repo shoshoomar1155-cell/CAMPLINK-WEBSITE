@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>CampLink – Booking Success</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+
+<!-- like index file -->
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+        <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+        alt="My Profile" class="profile-icon" 
+        onclick="window.location.href='myprofile.html'"> <!--this is from chapter 6,changes the page to another file --> 
+</div>
+
+
+
+<div class="page-container">
+<h1>Booking Successful!</h1>
+
+<div class="card">
+<p>Thank you for your booking. Here are your trip details:</p>
+
+<!-- div, span, strong all from ch2 -->
+ <!--class="summary" from ch4 css-->
+
+<div class="summary"> <!--we chose summary name of the class to see the summary of the booking-->
+  <div>
+    <strong>Student Name:</strong> <span id="studentName"></span></div>
+
+  <div>
+    <strong>City / Destination:</strong> <span id="city"></span></div>
+
+  <div>
+    <strong>Trip Type:</strong> <span id="tripType"></span></div>
+
+  <div>
+    <strong>Number of Students:</strong> <span id="numStudents"></span></div>
+
+  <div>
+    <strong>Total Price:</strong> $<span id="totalPrice"></span></div>
+  <div>
+    <strong>Meeting Point:</strong> <span id="meetingPoint"></span></div>
+  <div>
+    
+    <strong>Trip Date:</strong> <span id="tripDate"></span></div>
+  <div><strong>Notes:</strong> <span id="notes"></span></div>
+</div>
+
+
+
+ <!--this is from chapter 6,changes the page to another file --> 
+ 
+<button onclick="window.location.href='index.html'" 
+style="margin-top:15px;padding:10px 16px;background:
+#1b7a4d;color:
+#fff;border:none;border-radius:6px;cursor:pointer;">
+    Back to Home
+</button>
+
+</div>
+</div>
+
+
+<!--here we use ch6 Java secript-->
+
+
+<script>
+//check the payment
+
+if(localStorage.getItem("paymentCompleted") !== "true"){
+    alert("You haven't completed the payment yet!");
+    window.location.href = "booking.html"; //this is from chapter 6,changes the page to another file 
+}
+
+// Fill in the data from localStorage
+document.getElementById("studentName").textContent = localStorage.getItem("fullName") || "";
+
+document.getElementById("city").textContent = localStorage.getItem("city") || "";
+
+document.getElementById("tripType").textContent = localStorage.getItem("tripType") || "";
+
+document.getElementById("numStudents").textContent = localStorage.getItem("numStudents") || "";
+
+document.getElementById("totalPrice").textContent = localStorage.getItem("totalPrice") || "";
+
+document.getElementById("meetingPoint").textContent = localStorage.getItem("meetingPoint") || "";
+
+document.getElementById("tripDate").textContent = localStorage.getItem("tripDate") || "";
+
+document.getElementById("notes").textContent = localStorage.getItem("notes") || "";
+
+
+// to delete your booking details after viewing them 
+// localStorage.clear();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Review Section -->
+<div class="review-box">
+<h2>Rate Your Experience</h2>
+<div class="stars" id="reviewStars">
+    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="2">&#9733;</span>
+    <span class="star" data-value="3">&#9733;</span>
+    <span class="star" data-value="4">&#9733;</span>
+    <span class="star" data-value="5">&#9733;</span>
+</div>
+<textarea id="reviewText" placeholder="Write your review..." rows="3"></textarea>
+<button id="submitReview">Submit</button>
+<p id="msg"></p>
+</div>
+
+
+
+<script>
+// Review system (كما هو بدون تغيير)
+let selectedRating = 0;
+const stars = document.querySelectorAll(".star");
+stars.forEach(star => {
+    star.addEventListener("mouseover", () => fillStars(star.dataset.value));
+    star.addEventListener("mouseout", () => fillStars(selectedRating));
+    star.addEventListener("click", () => {
+        selectedRating = star.dataset.value;
+        fillStars(selectedRating);
+    });
+});
+
+function fillStars(count){
+    stars.forEach(s => {
+        s.classList.toggle("filled", s.dataset.value <= count);
+    });
+}
+
+document.getElementById("submitReview").onclick = function() {
+    const text = document.getElementById("reviewText").value.trim();
+    const msg = document.getElementById("msg");
+
+    if(selectedRating == 0 || text === ""){
+        msg.textContent = "Please rate and write a review.";
+        msg.style.color = "red";
+        return;
+    }
+
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+    reviews.push({ rating: selectedRating, text: text });
+    localStorage.setItem("reviews", JSON.stringify(reviews));
+
+    msg.textContent = "Thank you! Your review has been submitted.";
+    msg.style.color = "green";
+
+    document.getElementById("reviewText").value = "";
+    selectedRating = 0;
+    fillStars(0);
+};
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

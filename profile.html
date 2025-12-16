@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampLink – Profile</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" alt="My Profile" class="profile-icon" onclick="window.location.href='myprofile.html'">
+
+</div>
+
+
+<div class="page-container">
+    <h1 class="page-title">Complete your profile</h1>
+
+    <!-- Progress bar: Profile active -->
+    <div class="progress">
+        <span>Account</span>
+        <span class="active">Profile</span>
+        <span>City</span>
+        <span>Trip</span>
+        <span>Payment</span>
+        <span>Confirm</span>
+    </div>
+
+    <!--  when submitted goes to destinations.html -->
+    <div class="card">
+        <form action="destinations.html" method="get">
+            <div class="form-group">
+                <label for="birthDate">Date of birth</label>
+                <input type="date" id="birthDate" name="birthDate">
+            </div>
+
+
+<div class="form-group">
+                <label for="level">Study level</label>
+                <select id="level" name="level">
+                    <option value="">-- Select level --</option>
+                    <option value="High school">High school</option>
+                    <option value="University">University</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="emergencyName">Emergency contact name</label>
+                <input type="text" id="emergencyName" name="emergencyName">
+            </div>
+
+
+            <div class="form-group">
+                <label for="emergencyPhone">Emergency contact phone</label>
+                <input type="tel" id="emergencyPhone" name="emergencyPhone">
+            </div>
+
+
+            <div class="form-group">
+                <label for="healthNotes">Important health notes (optional)</label>
+                <textarea id="healthNotes" name="healthNotes"></textarea>
+            </div>
+
+            
+            <button type="submit" class="btn-primary">
+                Save profile &amp; explore trips
+            </button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

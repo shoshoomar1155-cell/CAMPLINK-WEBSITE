@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CampLink – Payment</title>
+<link rel="stylesheet" href="style.css">
+<style> 
+.page-container {
+    max-width: 600px;
+}</style>
+</head>
+<body>
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>  
+      <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" alt="My Profile" class="profile-icon" onclick="window.location.href='myprofile.html'">
+
+</div>
+
+<div class="page-container">
+<h1>Payment</h1>
+<div class="card">
+<form id="paymentForm" onsubmit="return completePayment();">
+  <div class="form-group">
+    <label for="cardNumber">Card number</label>
+    <input type="text" id="cardNumber" maxlength="16" required>
+  </div>
+  <div class="form-group">
+    <label for="expiryDate">Expiry date</label>
+    <input type="month" id="expiryDate" required>
+  </div>
+  <div class="form-group">
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" maxlength="4" required>
+  </div>
+  <button type="submit" class="btn-primary">Pay Now</button>
+</form>
+<p id="paymentMessage" style="margin-top:10px;font-size:0.9em;"></p>
+</div>
+</div>
+
+<script>
+function completePayment() {
+    var card = document.getElementById("cardNumber").value.trim();
+    var expiry = document.getElementById("expiryDate").value.trim();
+    var cvv = document.getElementById("cvv").value.trim();
+    var message = document.getElementById("paymentMessage");
+
+    if(!card || !expiry || !cvv) {
+        message.style.color = "red";
+        message.textContent = "Please fill all payment fields.";
+        return false;
+    }
+
+    if(card.length < 16) {
+        message.style.color = "red";
+        message.textContent = "Card number must be 16 digits.";
+        return false;
+    }
+  if(cvv.length < 3) {
+        message.style.color = "red";
+        message.textContent = "CVV number must be 3 digits.";
+        return false;
+    }
+
+    // هنا يمكن إضافة تحقق إضافي إذا أحببت
+
+    // محاكاة الدفع الناجح: حفظ حالة الدفع
+    localStorage.setItem("paymentCompleted", "true");
+
+    // الانتقال لصفحة Booking Success
+    window.location.href = "booking-success.html";
+    return false; // منع إعادة تحميل الصفحة
+}
+</script>
+
+</body>
+</html>

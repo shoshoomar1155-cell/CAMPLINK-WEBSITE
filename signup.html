@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- دعم اللغات العربية والانجليزية والرموز / Support Arabic & English languages and symbols -->
+    <title>CampLink – Sign up</title>
+    <link rel="stylesheet" href="style.css"> <!-- ربط ملف CSS خارجي / Link external CSS -->
+<style> 
+.page-container {
+    max-width: 600px; /* تحديد عرض الصفحة / Set max width for page container */
+}</style>
+</head>
+<body>
+
+<!-- Header navigation -->
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a> <!-- شعار الموقع / Site logo -->
+    <a href="index.html">Home</a> <!-- رابط للصفحة الرئيسية / Home link -->
+    <a href="destinations.html">Destinations</a> <!-- رابط الوجهات / Destinations link -->
+    <a href="events.html">Events</a> <!-- رابط الفعاليات / Events link -->
+    <a href="about.html">About</a> <!-- رابط من نحن / About link -->
+    <a href="contact.html">Contact</a> <!-- رابط التواصل / Contact link -->
+    <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+         alt="My Profile" class="profile-icon" 
+         onclick="window.location.href='myprofile.html'"> <!-- أيقونة الملف الشخصي / Profile icon -->
+</div>
+
+<!-- Main signup page container -->
+<div class="page-container">
+    <h1 class="page-title">Create your student account</h1> <!-- عنوان الصفحة / Page title -->
+
+    <div class="card">
+        <form id="signupForm">
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName">Full name</label> <!-- اسم الطالب / Full name -->
+                <input type="text" id="fullName" required>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Student email</label> <!-- البريد الإلكتروني للطالب / Student email -->
+                <input type="email" id="email" required>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label for="phone">Mobile number</label> <!-- رقم الجوال / Mobile number -->
+                <input type="tel" id="phone" required maxlength="10">
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label> <!-- كلمة المرور / Password -->
+                <input type="password" id="password" required>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm password</label> <!-- تأكيد كلمة المرور / Confirm password -->
+                <input type="password" id="confirmPassword" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Create account</button> <!-- زر إنشاء الحساب / Create account button -->
+
+            <p class="small-text">
+                Already have an account? <a href="signin.html">Sign In</a>. <!-- رابط تسجيل الدخول / Sign in link -->
+            </p>
+
+            <p id="errorMsg" class="error-message"></p> <!-- مكان عرض الأخطاء / Error message placeholder -->
+        </form>
+    </div>
+</div>
+
+<script>
+// Add event listener to signup form / إضافة مستمع للنموذج
+document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault(); // منع إعادة تحميل الصفحة / Prevent page reload
+
+    // Get form values / جلب القيم من النموذج
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMsg = document.getElementById("errorMsg");
+
+    // Validate empty fields / التحقق من الحقول الفارغة
+    if(!fullName || !email || !phone || !password || !confirmPassword){
+        errorMsg.textContent = "Please fill all fields!"; // رسالة خطأ / Error message
+        return;
+    }
+
+    // Check if passwords match / التحقق من تطابق كلمة المرور
+    if(password !== confirmPassword){
+        errorMsg.textContent = "Passwords do not match!";
+        return;
+    }
+
+    // Check phone length / التحقق من طول رقم الجوال
+    if(phone.length !== 10){
+        errorMsg.textContent = "Mobile number must be 10 digits!";
+        return;
+    }
+
+    // Retrieve users from localStorage / جلب المستخدمين من LocalStorage
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    // Create new user object / إنشاء كائن مستخدم جديد
+    const newUser = {
+        fullName,
+        email,
+        phone,
+        password
+    };
+
+    // تحقق إذا البريد موجود مسبقاً
+    const existingUser = users.find(u => u.email === email);
+    if(existingUser){
+        errorMsg.textContent = "This email is already registered!";
+        return; // يمنع إنشاء الحساب الجديد
+    }
+    // Add new user to users array / إضافة المستخدم الجديد للقائمة
+    users.push(newUser);
+
+    // Save users array back to localStorage / حفظ القائمة في LocalStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    // Set current user as logged in / تسجيل المستخدم الحالي
+    localStorage.setItem("currentUser", email);
+
+    // Redirect to destinations page / إعادة التوجيه لصفحة الوجهات
+    window.location.href = "destinations.html";
+});
+</script>
+
+<script>
+// Review system (كما هو بدون تغيير / same as before)
+let selectedRating = 0;
+const stars = document.querySelectorAll(".star");
+stars.forEach(star => {
+    star.addEventListener("mouseover", () => fillStars(star.dataset.value)); // hover effect
+    star.addEventListener("mouseout", () => fillStars(selectedRating)); // reset hover
+    star.addEventListener("click", () => { // select rating
+        selectedRating = star.dataset.value;
+        fillStars(selectedRating);
+    });
+});
+
+function fillStars(count){
+    stars.forEach(s => {
+        s.classList.toggle("filled", s.dataset.value <= count); // fill stars up to selected rating
+    });
+}
+
+document.getElementById("submitReview").onclick = function() {
+    const text = document.getElementById("reviewText").value.trim();
+    const msg = document.getElementById("msg");
+
+    if(selectedRating == 0 || text === ""){
+        msg.textContent = "Please rate and write a review."; // رسالة خطأ / Error message
+        msg.style.color = "red";
+        return;
+    }
+
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]"); // جلب المراجعات
+    reviews.push({ rating: selectedRating, text: text }); // إضافة المراجعة الجديدة
+    localStorage.setItem("reviews", JSON.stringify(reviews)); // حفظ المراجعات
+
+    msg.textContent = "Thank you! Your review has been submitted."; // رسالة نجاح
+    msg.style.color = "green";
+
+    document.getElementById("reviewText").value = ""; // إعادة تعيين النص
+    selectedRating = 0; // إعادة تعيين النجوم
+    fillStars(0);
+};
+</script>
+
+</body>
+</html>

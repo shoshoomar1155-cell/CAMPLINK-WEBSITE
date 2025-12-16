@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<meta charset="UTF-8">
+<title>CampLink – Booking</title>
+<link rel="stylesheet" href="style.css">
+<style> 
+.page-container {
+    max-width: 600px;
+}</style> </head>
+<body>
+
+<!-- like index file -->
+<div class="header">
+<a href="index.html" class="logo">CampLink</a>
+<a href="index.html">Home</a>
+<a href="destinations.html">Destinations</a>
+<a href="events.html">Events</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+    <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+    alt="My Profile" 
+    class="profile-icon" onclick="window.location.href='myprofile.html'">
+                         <!--this is from chapter 6,changes the page to another file --> 
+</div>
+
+
+
+<div class="page-container">
+<h1 class="page-title">Booking</h1>
+<p class="page-subtitle">
+    Confirm your trip details and number of students before completing your booking.
+</p>
+
+<div class="progress">
+<span>Account</span>
+<span>Profile</span>
+<span>City</span>
+<span class="active">Trip & Payment</span>
+<span>Confirm</span>
+</div>
+
+
+
+<div class="card">
+<div class="summary-title" id="summaryCity"> Selected destination: </div>
+<div class="summary-text" id="summaryType"> Trip type: </div>
+<div class="summary-text" id="summaryBasePrice">Base price per student:</div>
+</div>
+
+
+<div class="card">
+
+ <!--triggers the function processBooking() when the user clicks "Confirm booking".-->
+<form id="bookingForm" onsubmit="return processBooking();"> 
+
+<div class="form-group">
+<label for="studentName">Student Name</label>
+<input type="text" id="studentName" >
+</div>
+
+
+<div class="form-group">
+<label for="numStudents">Number of students</label>
+<input type="number" id="numStudents" value="1" min="1" max="100" 
+
+onkeyup="updateTotalPrice()"
+ onchange="updateTotalPrice()">
+
+</div>
+
+
+<div class="form-group">
+<label for="meetingPoint">Meeting point</label>
+<select id="meetingPoint">
+
+
+
+ <!--to select the option-->
+<option value="">-- Select meeting point --</option>
+<option value="University campus">University campus</option>
+<option value="City center">City center</option>
+<option value="Main bus station">Main bus station</option>
+</select>
+</div>
+
+
+
+<div class="form-group">
+<label for="tripDate">Trip date</label>
+<input type="date" id="tripDate">
+</div>
+
+
+
+<!--placeholder from ch3 > to displays a hint inside the input field-->
+<div class="form-group">
+<label for="notes">Special notes</label>
+
+<textarea id="notes" placeholder="Example: allergy, vegetarian meal, etc.">
+</textarea>
+</div>
+
+
+
+<div class="price-box">
+<div>Base price per student: <span class="price-highlight" id="basePriceText"> $0 </span></div>
+<div>Number of students: <span id="studentsText"> 1 </span></div>
+<div>Total price: <span class="price-highlight" id="totalPriceText"> $0 </span></div>
+</div>
+
+
+<p id="bookingMessage" class="message"></p>
+
+
+<div class="form-buttons">
+
+<button type="button" class="btn-secondary" 
+onclick="window.location.href='destinations.html';">  <!--this is from chapter 6,changes the page to another file --> 
+Back to destinations
+
+</button>
+<button type="submit" class="btn-primary">Proceed to Payment</button>
+</div>
+</form>
+</div>
+</div>
+
+
+
+
+<!--all here from ch 6 , use java script-->
+
+<script>
+var basePrice = 300;
+var cityFullName = "Default City";
+var tripTypeText = "Student trip";
+
+
+// Bring name of the student name frome localStorage
+document.getElementById("studentName").value = localStorage.getItem("fullName") || "";
+
+
+
+// مثال تحديد المدينة من hash
+var hash = window.location.hash.substring(1);
+
+if(hash === "bali"){ cityFullName="Bali – Beach & Adventure Camp"; tripTypeText="Beach + hiking"; basePrice=280; }
+else if(hash==="london"){ cityFullName="London – History & Culture"; tripTypeText="Cultural trip"; basePrice=320; }
+else if(hash==="turkey"){ 
+    cityFullName = "Cappadocia, Turkey – Camping & Hot Air Balloons"; 
+    tripTypeText = "Adventure"; 
+    basePrice = 250; 
+}
+else if(hash==="newyork"){ 
+    cityFullName = "New York – City & University Visit"; 
+    tripTypeText = "City trip"; 
+    basePrice = 400; 
+}
+else if(hash==="tokyo"){ 
+    cityFullName = "Tokyo – Tech & Culture Experience"; 
+    tripTypeText = "City & Adventure"; 
+    basePrice = 420; 
+}
+else if(hash==="france"){ 
+    cityFullName = "Paris, France – Art & Museum Tour"; 
+    tripTypeText = "Culture"; 
+    basePrice = 350; 
+}
+else if(hash==="swiss"){ 
+    cityFullName = "Switzerland – Mountain Hiking & Camp"; 
+    tripTypeText = "Mountain"; 
+    basePrice = 380; 
+}
+
+
+
+
+// here will Bring all the information frome localStorage
+document.getElementById("summaryCity").innerHTML = "Selected destination: " + cityFullName;
+
+document.getElementById("summaryType").innerHTML = "Trip type: " + tripTypeText;
+
+document.getElementById("summaryBasePrice").innerHTML = "Base price per student: $" + basePrice;
+
+document.getElementById("basePriceText").innerHTML = "$" + basePrice;
+
+
+
+
+//يسوي ابديت لتوتل 
+function updateTotalPrice(){
+
+    var students = parseInt(document.getElementById("numStudents").value,10);
+
+    if(isNaN(students)||students<1){ students=1; document.getElementById("numStudents").value=1; }
+    var total = students * basePrice;
+
+
+    document.getElementById("studentsText").textContent = students;
+    document.getElementById("totalPriceText").textContent = "$"+total;
+}
+
+
+
+
+
+
+function processBooking(){
+
+    var students = document.getElementById("numStudents").value;
+
+    var meeting = document.getElementById("meetingPoint").value;
+
+    var date = document.getElementById("tripDate").value;
+
+    var name = document.getElementById("studentName").value;
+
+    var message = document.getElementById("bookingMessage");
+    message.style.color="red";
+
+ 
+    if(!name || !students || !meeting || !date){
+        message.textContent = "Please fill all required fields.";
+        return false;
+    }
+
+
+
+
+
+ //to save the information
+
+    localStorage.setItem("fullName", name);
+
+    localStorage.setItem("numStudents", students);
+
+    localStorage.setItem("meetingPoint", meeting);
+
+    localStorage.setItem("tripDate", date);
+
+    localStorage.setItem("notes", document.getElementById("notes").value);
+
+    localStorage.setItem("city", cityFullName);
+
+    localStorage.setItem("tripType", tripTypeText);
+
+    localStorage.setItem("basePrice", basePrice);
+
+    localStorage.setItem("totalPrice", parseInt(students)*basePrice);
+
+
+
+
+ //this is from chapter 6,changes the page to another file  
+    window.location.href = "payment.html";
+    return false;
+}
+
+updateTotalPrice();
+</script>
+
+</body>
+</html>

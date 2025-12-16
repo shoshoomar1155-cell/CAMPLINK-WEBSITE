@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- This is to support Arabic and English Languges and sympol (from chapter 1 and 2) --> 
+    <title>CampLink – Destinations</title>
+
+    <!-- external css  from file style (from chapter 4) -->  
+    <link rel="stylesheet" href="style.css">
+    
+
+
+</head>
+<body>
+
+
+<!-- like index file -->
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+        <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+        alt="My Profile" class="profile-icon" 
+        onclick="window.location.href='myprofile.html'">
+        <!--this is from chapter 6,changes the page to another file --> 
+</div>
+
+
+
+
+<div class="page-container">
+
+    <!-- Page title and subtitle -->
+    <h1 class="page-title">Choose your destination</h1>
+    <p class="page-subtitle">
+        Browse popular student trips around the world, then open the city or book directly.
+    </p>
+
+
+    <!-- Progress bar (Account > Profile > City > Trip > Payment > Confirm) -->
+    <!-- Purely visual: shows that "City" is the current step -->
+     <!-- span from ch2> and inline-block from ch4  -->
+      <!--class="step-chip from css / and it is active step to highlight it-->
+
+    <div class="progress-bar">
+        <span class="step-chip">Account</span>
+        <span class="step-chip">Profile</span>
+        <span class="step-chip step-chip-active">City</span>
+        <span class="step-chip">Trip</span>
+        <span class="step-chip">Payment</span>
+        <span class="step-chip">Confirm</span>
+    </div>
+
+
+
+    <!-- Trip type filter chips -->
+    <div class="filter-section">
+
+        <span class="filter-label">Trip type:</span>
+
+        <!-- (From Chapter 6) onclick event calls JavaScript function filterTrips() -->
+         <!--filter buttons use onclick-->
+
+        <div class="filter-chips">
+            <button type="button" class="chip chip-active" onclick="filterTrips('all')">All</button>
+
+            <button type="button" class="chip" onclick="filterTrips('beach')">Beach</button>
+
+            <button type="button" class="chip" onclick="filterTrips('mountain')">Mountain</button>
+
+            <button type="button" class="chip" onclick="filterTrips('city')">City</button>
+
+            <button type="button" class="chip" onclick="filterTrips('culture')">Culture</button>
+
+            <button type="button" class="chip" onclick="filterTrips('adventure')">Adventure</button>
+        </div>
+    </div>
+
+<!-- زر الجولة الافتراضية تحت الهيدر -->
+<div style="display: flex; justify-content: flex-end; margin: 20px;">
+    <a href="virtual-tours.html" 
+       class="btn-booking" 
+       style="
+            
+            padding: 5px 5px;
+            font-size: 12px;
+            background-color: #19643d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+       ">
+       Explore More
+    </a>
+</div>
+
+    <!-- Destinations grid -->
+    <div class="trips-grid">
+        
+        
+        <!-- Bali -->
+        <!-- data-type used by JavaScript to filter cards -->
+
+        <div class="trip-card" data-type="beach">
+            <div class="trip-image">
+                <img src="images/bali.jpg" alt="Bali beach">
+            </div>
+
+            <div class="trip-body">
+                <h3>Bali</h3>
+                <p>Beach &amp; Adventure Camp</p>
+                <p>Snorkeling, campfire on the beach, island tour.</p>
+                <p class="trip-price">From $280 per student</p>
+                <p class="trip-level">Level: Light to medium adventure</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#bali" 
+                    class="btn-details">View details</a>
+
+
+                    <!-- Green Booking text button requested -->
+                    <a href="booking.html#bali" 
+                    class="btn-booking">Booking</a>
+                </div>
+
+                <p class="trip-extra">Trip type: Beach</p>
+            </div>
+        </div>
+
+     
+
+        <!-- London -->
+        <div class="trip-card" data-type="culture">
+            <div class="trip-image">
+                <img src="images/london.jpg" alt="London city">
+            </div>
+
+            <div class="trip-body">
+                <h3>London</h3>
+                <p>History &amp; Culture Week</p>
+                <p>City tour, British Museum, river cruise on the Thames.</p>
+                <p class="trip-price">From $320 per student</p>
+                <p class="trip-level">Level: Easy – culture &amp; walking</p>
+                <div class="btn-row">
+                    <a href="destination-details.html#london" class="btn-details">View details</a>
+                    <a href="booking.html#london" class="btn-booking">Booking</a>
+                </div>
+
+                <p class="trip-extra">Trip type: Culture</p>
+            </div>
+        </div>
+
+
+
+        <!-- Cappadocia / Turkey -->
+        <div class="trip-card" data-type="adventure">
+            <div class="trip-image">
+                <img src="https://i.pinimg.com/1200x/42/b0/3e/42b03e769c6bae08c26d8698cb816ae2.jpg" 
+                alt="Cappadocia hot air balloons">
+            </div>
+
+            <div class="trip-body">
+                <h3>Cappadocia, Turkey</h3>
+                <p>Camping &amp; Hot Air Balloons</p>
+                <p>Valley hike, cave visit, sunrise balloon ride.</p>
+                <p class="trip-price">From $250 per student</p>
+                <p class="trip-level">Level: Medium to strong adventure</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#turkey" class="btn-details">View details</a>
+                    <a href="booking.html#turkey" class="btn-booking">Booking</a>
+                </div>
+
+
+                <p class="trip-extra">Trip type: Adventure</p>
+            </div>
+        </div>
+
+
+
+        <!-- New York -->
+        <div class="trip-card" data-type="city">
+            <div class="trip-image">
+                <img src="images/newyork.jpg" alt="New York skyline">
+            </div>
+
+            <div class="trip-body">
+                <h3>New York</h3>
+                <p>City &amp; University Visit</p>
+                <p>Campus tour, city landmarks, Central Park walk.</p>
+                <p class="trip-price">From $400 per student</p>
+                <p class="trip-level">Level: Easy city trip</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#newyork" class="btn-details">View details</a>
+                    <a href="booking.html#newyork" class="btn-booking">Booking</a>
+                </div>
+
+                <p class="trip-extra">Trip type: City</p>
+            </div>
+        </div>
+
+
+
+        <!-- Tokyo -->
+        <div class="trip-card" data-type="city">
+            <div class="trip-image">
+                <img src="images/tokyo.jpg" alt="Tokyo city lights">
+            </div>
+
+            <div class="trip-body">
+                <h3>Tokyo</h3>
+                <p>Tech &amp; Culture Experience</p>
+                <p>Akihabara tour, shrines, anime &amp; gaming evening.</p>
+                <p class="trip-price">From $420 per student</p>
+                <p class="trip-level">Level: Easy – city &amp; walking</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#tokyo" class="btn-details">View details</a>
+                    <a href="booking.html#tokyo" class="btn-booking">Booking</a>
+                </div>
+
+
+                <p class="trip-extra">Trip type: City</p>
+            </div>
+        </div>
+
+
+
+        <!-- Paris / France -->
+        <div class="trip-card" data-type="culture">
+            <div class="trip-image">
+                <img src="images/france.jpg" alt="Paris Eiffel Tower">
+            </div>
+
+            <div class="trip-body">
+                <h3>Paris, France</h3>
+                <p>Art &amp; Museum Tour</p>
+                <p>Louvre visit, Seine boat tour, old town walk.</p>
+                <p class="trip-price">From $350 per student</p>
+                <p class="trip-level">Level: Easy culture trip</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#france" class="btn-details">View details</a>
+                    <a href="booking.html#france" class="btn-booking">Booking</a>
+                </div>
+
+
+                <p class="trip-extra">Trip type: Culture</p>
+            </div>
+        </div>
+
+
+
+        <!-- Switzerland -->
+        <div class="trip-card" data-type="mountain">
+            <div class="trip-image">
+                <img src="images/swiss.jpg" alt="Swiss mountains and lake">
+            </div>
+
+            <div class="trip-body">
+                <h3>Switzerland</h3>
+                <p>Mountain Hiking &amp; Camp</p>
+                <p>Easy hiking, lake views, 2-night mountain camp.</p>
+                <p class="trip-price">From $380 per student</p>
+                <p class="trip-level">Level: Medium hiking</p>
+
+                <div class="btn-row">
+                    <a href="destination-details.html#swiss" class="btn-details">View details</a>
+                    <a href="booking.html#swiss" class="btn-booking">Booking</a>
+                </div>
+
+                <p class="trip-extra">Trip type: Mountain</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- (From Chapter 6) JavaScript  -->
+ 
+
+<script>
+   
+   // function with one parameter (type)
+    function filterTrips(type) {
+
+
+        // we use getElementsByClassName to select elements in the page
+        var cards = document.getElementsByClassName("trip-card");
+        var i;
+
+        // Loop through all destination cards
+        for (i = 0; i < cards.length; i++) {
+            var card = cards[i];
+
+
+            //  we using getAttribute to read a data-* attribute
+            var tripType = card.getAttribute("data-type");
+
+
+            // Show or hide card by changing style.display
+            if (type === "all" || tripType === type) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        }
+
+        // Update active chip style
+        var chips = document.getElementsByClassName("chip");
+        for (i = 0; i < chips.length; i++) {
+            chips[i].classList.remove("chip-active");
+        }
+
+        // 
+        if (window.event && window.event.target) {
+            window.event.target.classList.add("chip-active");
+        }
+    }
+</script>
+
+</body>
+</html>
+

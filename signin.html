@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>CampLink – Sign In</title>
+<link rel="stylesheet" href="style.css">
+<style> 
+.page-container {
+    max-width: 600px;
+}</style>
+</head>
+<body>
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+        <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" alt="My Profile" class="profile-icon" onclick="window.location.href='myprofile.html'">
+
+    
+</div>
+
+<div class="page-container">
+    <h1>Sign in</h1>
+
+    <div class="card">
+        <form id="signinForm" onsubmit="return handleSignIn(event);">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input id="email" type="email" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" autocomplete="current-password">
+            </div>
+
+            <p id="signMsg" class="msg"></p>
+
+            <button type="submit" class="btn-primary">Sign In</button>
+
+            <p class="small">Don't have an account? <a href="signup.html">Create account</a></p>
+        </form>
+    </div>
+</div>
+<script>
+function showSignMsg(text, ok) {
+    const el = document.getElementById('signMsg');
+    el.textContent = text;
+    el.className = 'msg ' + (ok ? 'ok' : 'error');
+}
+
+function handleSignIn(e) {
+    if (e) e.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const pw = document.getElementById('password').value;
+
+    if (!email || !pw) {
+        showSignMsg('Please fill in both email and password.', false);
+        return false;
+    }
+
+    //  جلب كل المستخدمين
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+    //  البحث عن المستخدم الصحيح
+    const user = users.find(u => u.email === email && u.password === pw);
+
+    if (!user) {
+        showSignMsg('Incorrect email or password.', false);
+        return false;
+    }
+
+    //  تسجيل المستخدم الحالي
+    localStorage.setItem("currentUser", user.email);
+    localStorage.setItem("loggedIn", "true"); // يعني المستخدم سجل دخول
+
+
+// إعادة تعيين بيانات الحجز السابقة للمستخدم الجديد
+localStorage.removeItem("paymentCompleted");
+localStorage.removeItem("fullName");
+localStorage.removeItem("city");
+localStorage.removeItem("tripType");
+localStorage.removeItem("numStudents");
+localStorage.removeItem("totalPrice");
+localStorage.removeItem("meetingPoint");
+localStorage.removeItem("tripDate");
+localStorage.removeItem("notes");
+
+
+
+    showSignMsg('Login successful. Redirecting...', true);
+
+    //  إعادة التوجيه (اختاري الصفحة)
+    setTimeout(() => {
+        window.location.href = "myprofile.html"; // غيريها لو تبين صفحة ثانية
+    }, 700);
+
+    return true;
+}
+</script>
+
+
+</body>
+</html>

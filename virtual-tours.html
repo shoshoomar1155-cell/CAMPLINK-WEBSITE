@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"> <!-- Support for English and other languages -->
+<title>CampLink – Virtual Tours</title>
+<link rel="stylesheet" href="style.css"> <!-- External CSS -->
+<style>
+/* Center main headings / توسيط العناوين الرئيسية */
+h1 {
+    text-align: center;
+}
+
+/* Carousel container styling / تصميم حاوية السلايدر */
+.carousel-container {
+    max-width: 700px;
+    margin: 40px auto;
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Center carousel title / توسيط عنوان كل رحلة */
+.carousel-container h2 {
+    text-align: center;
+}
+
+/* Carousel wrapper / ملف السلايدر */
+.carousel {
+    position: relative;
+    overflow: hidden; /* Hide non-active slides / اخفاء الصور الغير فعالة */
+    border-radius: 10px;
+}
+
+/* Slide images / الصور */
+.slide {
+    width: 100%;
+    display: none; /* Hidden initially / مخفية في البداية */
+    border-radius: 10px;
+}
+
+/* Navigation buttons / أزرار التنقل */
+button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+button:hover {
+    background-color: rgba(0,0,0,0.8); /* Darker on hover / تغير اللون عند المرور */
+}
+
+button:first-of-type { left: 10px; } /* Left button / زر اليسار */
+button:last-of-type { right: 10px; } /* Right button / زر اليمين */
+</style>
+</head>
+<body>
+
+<h1>Explore Our Destinations</h1> <!-- Main heading / العنوان الرئيسي -->
+
+<!-- Bali Carousel -->
+<div class="carousel-container">
+  <h2>Bali – Beach & Adventure Camp</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/92/18/0c/92180c43cd2a006dbdb63fa080705e49.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/2d/53/ff/2d53ff31ada7c7d30f5205da9a3f2c10.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/48/7e/8a/487e8a7019ba7f896540017fbfe8cddc.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- London Carousel -->
+<div class="carousel-container">
+  <h2>London – History & Culture</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/44/1c/b8/441cb868329f76ca8f9211301ba74f81.jpg" class="slide">
+    <img src="https://i.pinimg.com/736x/d2/73/90/d27390dc40d4a2255d64e46d3136f769.jpg" class="slide">
+    <img src="https://i.pinimg.com/736x/d4/6d/c8/d46dc8e83d7388cb61d790586e9586c9.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- Cappadocia Carousel -->
+<div class="carousel-container">
+  <h2>Cappadocia – Hot Air Balloons</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/62/ec/25/62ec259f5fdd2f272bb6dd02cc7f8a4a.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/b9/32/4b/b9324bc69c491d6a763184873f7f853f.jpg" class="slide">
+    <img src="https://i.pinimg.com/736x/ec/1d/dd/ec1ddd1eaae0ab1a7a404d0421f23abc.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- New York Carousel -->
+<div class="carousel-container">
+  <h2>New York – City & University Visit</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/64/58/bc/6458bc68d9762c11b6241b6b041c026c.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/07/6b/47/076b47550469f72ef104957806da1e1d.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/2e/00/af/2e00af68239a1bf40514a51847a48631.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- Tokyo Carousel -->
+<div class="carousel-container">
+  <h2>Tokyo – Tech & Culture</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/de/50/ee/de50ee68b136afe1f2592d89f839f7ee.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/7e/89/b9/7e89b9c7309cb106c2e560504086adb8.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/f2/e2/fa/f2e2fa5295ca489ebd6e940fb2bef2c1.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- Paris Carousel -->
+<div class="carousel-container">
+  <h2>Paris – Art & Museum Tour</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/ce/e4/9a/cee49af7d69d5aa095143d0ac0e2afaf.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/94/fc/e3/94fce35d0a3377f4faf020c1427c1844.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/d6/c8/b3/d6c8b3b16319f3e8d91e681a9beb2540.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<!-- Switzerland Carousel -->
+<div class="carousel-container">
+  <h2>Switzerland – Mountain Hiking & Camp</h2>
+  <div class="carousel">
+    <img src="https://i.pinimg.com/1200x/0c/36/63/0c3663cf17089844b34f014803e3ce65.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/c1/71/5b/c1715b4dab9172ea43e50b9a5af8a82d.jpg" class="slide">
+    <img src="https://i.pinimg.com/1200x/0b/d6/f2/0bd6f247feb14cd91e92b7175ad99877.jpg" class="slide">
+  </div>
+  <button onclick="prevSlide(this)">&#10094;</button>
+  <button onclick="nextSlide(this)">&#10095;</button>
+</div>
+
+<script>
+// Show specific slide / إظهار صورة محددة
+function showSlide(carousel, index) {
+  const slides = carousel.querySelectorAll(".slide");
+  slides.forEach((slide, i) => slide.style.display = (i === index ? "block" : "none"));
+  carousel.currentSlide = index;
+}
+
+// Next slide / الصورة التالية
+function nextSlide(btn) {
+  const carousel = btn.parentElement.querySelector(".carousel");
+  const slides = carousel.querySelectorAll(".slide");
+  let index = carousel.currentSlide || 0;
+  index = (index + 1) % slides.length; // Loop back
+  showSlide(carousel, index);
+}
+
+// Previous slide / الصورة السابقة
+function prevSlide(btn) {
+  const carousel = btn.parentElement.querySelector(".carousel");
+  const slides = carousel.querySelectorAll(".slide");
+  let index = carousel.currentSlide || 0;
+  index = (index - 1 + slides.length) % slides.length; // Loop to last
+  showSlide(carousel, index);
+}
+
+// Initialize carousels / تهيئة جميع السلايدر
+document.querySelectorAll(".carousel").forEach(c => showSlide(c, 0));
+</script>
+
+<!-- Back button under header / زر العودة أسفل الهيدر -->
+<div style="display: flex; justify-content: flex-start; margin: 10px 20px;">
+    <a href="destinations.html" 
+       class="btn-secondary" 
+       style="
+            padding: 5px 12px;
+            font-size: 14px;
+            background-color: #104321;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid #084327;
+       ">
+        ← Back
+    </a>
+</div>
+
+</body>
+</html>

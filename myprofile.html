@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile – CampLink</title>    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .page-container {text-align: center; width: 90%; max-width: 600px; margin: 30px auto; }
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin: 30px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #1b7f5a;
+            font-weight: bold;
+        }
+
+        .profile-info p {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .profile-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn-action {
+            background-color: #1b7f5a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .btn-action:hover {
+            background-color: #166b4c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
+
+<div class="card">
+    <h2 class="card-title">My Profile</h2>
+
+    <div class="profile-info">
+        <p><strong>Name:</strong> <span id="fullName"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Phone:</strong> <span id="phone"></span></p>
+    </div>
+
+    <!-- زر الحجز (معدل) -->
+    <button id="bookingBtn" class="btn-secondary" style="display:none;" onclick="goToBooking()">
+        My Booking
+    </button>
+
+    <div class="profile-buttons">
+        <button class="btn-action" id="bookingSuccessBtn" style="display:none;">My Booking</button>
+        <button class="btn-action" id="actionBtn">Login</button>
+    </div>
+</div>
+
+<script>
+const fullNameEl = document.getElementById("fullName");
+const emailEl = document.getElementById("email");
+const phoneEl = document.getElementById("phone");
+const actionBtn = document.getElementById("actionBtn");
+const bookingBtn = document.getElementById("bookingBtn");
+
+// جلب المستخدم الحالي
+const currentEmail = localStorage.getItem("currentUser");
+
+// جلب جميع المستخدمين
+const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+// البحث عن المستخدم الحالي
+const user = users.find(u => u.email === currentEmail);
+
+function updateProfileUI(){
+    if (user) {
+        fullNameEl.textContent = user.fullName;
+        emailEl.textContent = user.email;
+        phoneEl.textContent = user.phone;
+
+        actionBtn.textContent = "Logout";
+        actionBtn.onclick = () => {
+            localStorage.removeItem("currentUser");
+            window.location.reload();
+        };
+
+        bookingBtn.style.display = "inline-block";
+
+    } else {
+        fullNameEl.textContent = "";
+        emailEl.textContent = "";
+        phoneEl.textContent = "";
+        
+        actionBtn.textContent = "Login";
+        actionBtn.onclick = () => {
+            window.location.href = "signin.html";
+        };
+
+        bookingBtn.style.display = "none";
+    }
+}
+
+updateProfileUI();
+
+// دالة الانتقال لصفحة My Booking
+function goToBooking() {
+    window.location.href = "booking-success.html";
+}
+</script>
+
+</body>
+</html>

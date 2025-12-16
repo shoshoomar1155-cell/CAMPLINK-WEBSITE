@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- mean English Langueg --> 
+<head>
+    <meta charset="UTF-8">
+    <title>CampLink – Home</title>
+
+    <!-- external css  from file css (from chapter 4) --> 
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+ 
+<!-- header with navigation links, it will repeted in all pages!! -->
+<div class="header">
+    <a href="index.html" class="logo">CampLink</a>
+    &nbsp;&nbsp;
+    <a href="index.html">Home</a>
+    <a href="signup.html">Create Account</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="events.html">Events</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>                                                                      
+        <img src="https://i.pinimg.com/736x/bb/d5/4c/bbd54c57ca19d79fa626ba5b9d1e4e82.jpg" 
+        alt="My Profile" class="profile-icon" 
+        onclick="window.location.href='myprofile.html'">
+        <!--this is from chapter 6,changes the page to another file --> 
+</div> 
+
+
+
+
+<div class="page-container">
+
+    <!-- for welcom  card-->
+    <section class="welcome-card">  
+        <h1>Welcome to CampLink</h1>
+        <h3> Let’s make your next trip Unforgettable!</h3>
+    </section>
+
+
+
+
+    <!-- for booking your trip -->
+    <section class="book-card">
+        <div class="book-text">
+            <h2>Book your next trip!</h2><br><br>
+            <p>
+                Plan camping, hiking, and city trips for students in different cities
+                around the world.<br><br> <br>Start by creating your account, then choose your
+                destination and confirm your booking.
+            </p>
+            
+
+          <!-- for booking your trip -->
+            <a href="signup.html" class="btn btn-primary">Create account</a>
+            <a href="destinations.html" class="btn btn-secondary">Browse destinations</a>
+        </div>
+
+
+
+        <div class="book-image">
+            
+            <img src="images/camping.jpg" alt="Students camping in nature">
+        </div>
+    </section>
+
+
+
+    <!-- for the categories  -->
+    <section class="trip-categories">
+        <h3>Find the right trip type</h3>
+        <p>Select a category to explore student trips that match your mood.</p>
+
+        <div class="category-buttons">
+            <a href="destinations.html" class="chip chip-popular">Popular trips</a>
+            <a href="destinations.html" class="chip chip-family">Family
+                 &amp; school groups</a>
+            <a href="destinations.html" class="chip chip-adventure">Adventure &amp; hiking</a>
+        </div>
+    </section>
+
+
+
+
+    <!--cities, will repeted for all cities-->
+    <section class="popular-cities">
+        <h3>Popular student destinations</h3>
+
+        <div class="city-grid">
+            <article class="city-card">
+                <img src="images/france.jpg" alt="Paris city view">
+                <div class="city-card-body">
+                    <h4>Paris, France</h4>
+                    <p>City • Culture • Museums</p>
+                    <p class="price">From $250 / student</p>
+                    <a href="destination-details.html#france" class="btn-small">View details</a>
+                </div>
+            </article>
+
+
+
+
+            <article class="city-card">
+                <img src="images/tokyo.jpg" alt="Tokyo skyline">
+                <div class="city-card-body">
+                    <h4>Tokyo, Japan</h4>
+                    <p>City • Technology • Night tours</p>
+                    <p class="price">From $320 / student</p>
+                    <a href="destination-details.html#tokyo" class="btn-small">View details</a>
+                </div>
+            </article>
+
+
+
+            <article class="city-card">
+                <img src="images/swiss.jpg" alt="Swiss mountains">
+                <div class="city-card-body">
+                    <h4>Swiss Alps Camp</h4>
+                    <p>Mountain • Camping • Hiking</p>
+                    <p class="price">From $210 / student</p>
+                    <a href="destination-details.html#swiss" class="btn-small">View details</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+
+    <!-- how-it-works? for new student like a guid  for how use our website-->
+    <section class="how-it-works">
+        <h3>How it works</h3>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-number">1</span>
+                <h4>Create your student account</h4>
+                <p>Sign up with your basic information.</p>
+            </div>
+
+
+
+            <div class="step-card">
+                <span class="step-number">2</span>
+                <h4>Choose city, date and trip type</h4>
+                <p>Select destination, travel dates and activity.</p>
+            </div>
+
+
+
+            <div class="step-card">
+                <span class="step-number">3</span>
+                <h4>Confirm your booking</h4>
+                <p>Review the details and finish the booking.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+
+
+
+
+
+<div id="reviewsSection">
+    <h2>Customer Reviews</h2>
+    <div id="reviewsContainer"></div>
+</div>
+
+
+
+
+
+
+<script>
+// show reviews on homepage
+function loadReviews(){
+    const container = document.getElementById("reviewsContainer");
+    const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+
+    container.innerHTML = "";
+
+    reviews.forEach(r => {
+        let s = "";
+        for(let i=1;i<=5;i++){
+            s += `<span class="star ${i <= r.rating ? "filled" : ""}">&#9733;</span>`;
+        }
+
+        const card = `
+            <div class="review-card">
+                <div class="stars">${s}</div>
+                <p>${r.text}</p>
+            </div>
+        `;
+
+        container.innerHTML += card;
+    });
+}
+
+loadReviews();
+</script>
+
+
+
+
+<!-- this is in the end of the bage --> 
+<footer class="main-footer">
+    <p> &copy; 2025 CampLink – Student Trips Project</p>
+    <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="events.html">Events</a>
+    </div>
+</footer>
+
+
+</body>
+</html>
